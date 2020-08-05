@@ -28,8 +28,8 @@ class Database:
 
 	def showAll(self):
 		self.c.execute("SELECT * FROM employees")
-		for a,b,c2 in self.c.fetchall():
-			print(a,b,c2)
+		for a,b,c in self.c.fetchall():
+			print(a,b,c)
 			
 	def delete(self,sirname):
 		self.c.execute("DELETE FROM employees WHERE last =?",(sirname,))
@@ -41,11 +41,11 @@ class Database:
 
 	def findByName(self,sirname):
 		self.c.execute("SELECT * FROM employees WHERE last =?",(sirname,))
-		for a,b,c2 in self.c.fetchall():
-			print(a,b,c2)
+		for a,b,c in self.c.fetchall():
+			print(a,b,c)
 
 	def updatePay(self,name,sirname,pay):
-		self.c.execute("""UPDATE employees SET pay =? WHERE first =? AND last =?""",(pay,name,sirname))
-
+		self.c.execute("UPDATE employees SET pay =? WHERE first =? AND last =?",(pay,name,sirname))
+		self.conn.commit()
 
 	

@@ -9,12 +9,40 @@ while True:
 		database.showAll()
 	
 	if(inpt=="addEmployee"):
-		 name = input("Name: ")
-		 sirname = input("Sirname: ")
-		 pay = int(input("Sallary: "))
+		name = input("Name: ")
+		sirname = input("Sirname: ")
+		pay = int(input("Sallary: "))
 		 
-		 database.addEmployee(name,sirname,pay)
+		database.addEmployee(name,sirname,pay)
 		 
-		 print("You added: ",end='')
-		 
-		 database.findByName(sirname)
+		print("You added: ",end="")
+		database.findByName(sirname)
+		
+	if (inpt == "updatePay"):
+		name = input("Name: ")
+		sirname = input("Sirname: ")
+		pay = int(input("New Sallary: "))
+		
+		database.updatePay(name,sirname,pay)
+
+		print("Updated: ",end="")
+		database.findByName(sirname)
+
+		database.findByName(sirname)
+
+	if(inpt =="deleteEmployee"):
+		sirname =input("Sirname: ")
+
+		print("Deleted: ",end="")
+		database.findByName(sirname)
+
+		database.delete(sirname)
+
+	if(inpt =="deleteAll"):
+
+		print("Deleted: ")
+
+		database.showAll()
+
+		database.deleteAll()
+
