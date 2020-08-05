@@ -1,19 +1,22 @@
 import sqlite3
 from employeeCreate import Employee
+
+
 class Database:
 	
 	def __init__(self):
-		self.conn = sqlite3.connect('employees.db')
+		self.conn = sqlite3.connect(':memory:')
 		self.c = self.conn.cursor()
 		self.employees = []
-	try:
-		self.c.execute("""CREATE TABLE employees(
-		             first text,
-		             last text,
-		             pay integer
-					)""")
-	except:
-		pass
+		try:
+			self.c.execute("""CREATE TABLE employees(
+			             first text,
+			             last text,
+			             pay integer
+						)""")
+		except Exception as e:
+			print(e)
+		
 		
 
 	def addEmployee(self,name,sirname,pay):
