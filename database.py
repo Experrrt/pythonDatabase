@@ -3,9 +3,9 @@ from employeeCreate import Employee
 
 
 class Database:
-	//////////////////////
+	#####################
 	def __init__(self):
-		self.conn = sqlite3.connect(':memory:')
+		self.conn = sqlite3.connect('employees.db')
 		self.c = self.conn.cursor()
 		self.employees = []
 		try:
@@ -14,8 +14,8 @@ class Database:
 			             last text,
 			             pay integer
 						)""")
-		except Exception as e:
-			print(e)
+		except:
+			pass
 		
 		
 
@@ -31,7 +31,7 @@ class Database:
 		for a,b,c2 in self.c.fetchall():
 			print(a,b,c2)
 			
-	def delete(self,name,sirname,pay):
+	def delete(self,sirname):
 		self.c.execute("DELETE FROM employees WHERE last =?",(sirname,))
 		self.conn.commit()
 
